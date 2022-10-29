@@ -57,6 +57,14 @@ function dePalabrasAFrase(palabras) {
   // con espacios entre cada palabra
   // Ejemplo: ['Hello', 'world!'] -> 'Hello world!'
   // Tu código:
+  let cadena = "";
+  palabras.forEach(element => {
+    if(cadena == "") 
+      cadena += element;
+    else
+      cadena += " " + element;
+  });
+  return cadena;
 }
 
 
@@ -64,6 +72,12 @@ function arrayContiene(array, elemento) {
   // Comprueba si el elemento existe dentro de "array"
   // Devuelve "true" si está, o "false" si no está
   // Tu código:
+  for (let index = 0; index < array.length; index++) {
+    if (array[index] == elemento) {
+      return true;
+    }
+  }
+  return false;
 }
 
 
@@ -71,6 +85,13 @@ function agregarNumeros(numeros) {
   // "numeros" debe ser un arreglo de enteros (int/integers)
   // Suma todos los enteros y devuelve el valor
   // Tu código:
+  let suma = 0;
+  for (let index = 0; index < numeros.length; index++) {
+    if (Number.isInteger (numeros[index])) {
+      suma += numeros[index];
+    }
+  }
+  return suma;
 }
 
 
@@ -78,6 +99,12 @@ function promedioResultadosTest(resultadosTest) {
   // "resultadosTest" debe ser una matriz de enteros (int/integers)
   // Itera (en un bucle) los elementos del array, calcula y devuelve el promedio de puntajes
   // Tu código:
+  let suma = agregarNumeros(resultadosTest);
+  let cant = resultadosTest.length;
+  if (cant == 0) 
+    return 0;
+  else
+    return suma / cant ;
 }
 
 
@@ -85,6 +112,13 @@ function numeroMasGrande(numeros) {
   // "numeros" debe ser una matriz de enteros (int/integers)
   // Devuelve el número más grande
   // Tu código:
+  let mayor;
+  for (let index = 0; index < numeros.length; index++) {
+    if (mayor == null || numeros[index] > mayor)  {
+        mayor = numeros[index];
+    }
+  }
+  return mayor;
 }
 
 
@@ -98,6 +132,13 @@ function multiplicarArgumentos() {
 function cuentoElementos(arreglo){
   //Realiza una función que retorne la cantidad de los elementos del arreglo cuyo valor es mayor a 18.
   //Escribe tu código aquí
+  let cant = 0;
+  arreglo.forEach(element => {
+    if(element > 18) {
+      cant++;
+    }
+  });
+  return cant;
 
 }
 
@@ -107,7 +148,23 @@ function diaDeLaSemana(numeroDeDia) {
   //Realiza una función que dado el número del día de la semana, retorne: Es fin de semana
   //si el día corresponde a Sábado o Domingo y “Es dia Laboral” en caso contrario. 
   //Escribe tu código aquí   
-  
+  let dias = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+  index = numeroDeDia - 1;
+  if (index < 0 || index > 6) {
+    return "";
+  } else {
+    switch (dias[index]) {
+      case "Domingo":
+        return "Es fin de semana";
+        break;
+        case "Sabado":
+        return "Es fin de semana";
+        break;    
+      default:
+        return "Es dia Laboral";
+        break;
+    }
+  }
 } 
 
 
@@ -115,6 +172,13 @@ function empiezaConNueve(n) {
   //Desarrolle una función que recibe como parámetro un número entero n. Debe retornar true si el entero 
   //inicia con 9 y false en otro caso.
   //Escribe tu código aquí
+
+  let x = n.toString().substr(0,1);
+  if (x == '9') {
+    return true;
+  } else {
+    return false;
+  }
   
 }
 
